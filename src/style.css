@@ -43,19 +43,16 @@ body {
   padding: 0 1.25rem;
   justify-content: space-between;
 }
-
 .app-header h1 {
   font-size: 1.25rem;
   font-weight: 600;
 }
-
 .app-header nav a {
   color: var(--clr-light);
   margin-left: 1rem;
   text-decoration: none;
   font-size: 0.875rem;
 }
-
 .app-header nav a:hover {
   text-decoration: underline;
 }
@@ -66,20 +63,17 @@ body {
   max-width: var(--max-width);
   margin: 0 auto;
 }
-
 .viz-section h2 {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   color: var(--clr-primary);
 }
-
-/* Contenedor donde D3 renderizará el SVG / Canvas */
 .viz-container {
   width: 100%;
   min-height: 480px;
   background: var(--clr-light);
   border-radius: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
   overflow: hidden;
   position: relative;
 }
@@ -94,25 +88,20 @@ body {
   color: var(--clr-light);
 }
 
-/* ===== layout vertical para choropleth ================================= */
+/* ===== Choropleth layout ===== */
 .choropleth-layout {
   display: flex;
-  flex-direction: column; /* de arriba abajo */
-  align-items: center;    /* centra todo horizontalmente */
+  flex-direction: column;
+  align-items: center;
 }
-
-/* ===== choropleth: mapas y leyendas ===================================== */
 .choro-map {
   width: 100%;
   position: relative;
 }
-
 .legend-wrap {
   width: 100%;
   margin: 0.5rem 0 1rem;
 }
-
-/* Leyenda incrustada bajo el mapa */
 .map-legend rect {
   stroke: #444;
   stroke-width: 0.6;
@@ -127,99 +116,96 @@ body {
   stroke-width: 0.5;
 }
 
-/* ===== stats-panel: controles a la izquierda, Top-5 a la derecha ======== */
+/* ===== Stats panel (Choropleth) ===== */
 .stats-panel {
   display: grid;
-  grid-template-columns: auto 1fr; /* controles | Top-5 */
+  grid-template-columns: 1fr 2fr; /* 1 parte controles+tabla, 2 partes resto */
   column-gap: 2rem;
-  align-items: start;
+  max-width: 600px; 
   width: 100%;
-  max-width: 700px;
   margin: 0 auto 1.5rem;
   padding: 1rem;
   background: #fff;
   border: 1px solid #d0d7de;
   border-radius: 6px;
 }
-
-/* Controles: año + botones de métrica */
+/* Controles verticales */
 .controls {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-width: 180px
 }
-
+.controls .year-select {
+  width: 100%;
+}
 .controls .year-select label {
   font-size: 0.9rem;
   color: var(--clr-text);
 }
-
 .controls .year-select select {
-  margin-left: 0.5rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  max-width: 200px;
   padding: 0.3rem;
   font-size: 0.9rem;
 }
-
-/* Botones de métrica */
+/* Botones métricos en columna */
 .metric-buttons {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 200px;
 }
-
 .metric-buttons button {
-  padding: 0.4rem 0.8rem;
+  width: 100%;
+  padding: 0.6rem 0;
   border: 1px solid var(--clr-primary);
   background: transparent;
   color: var(--clr-primary);
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.875rem;
+  text-align: center;
   transition: background 0.2s, color 0.2s;
 }
-
-.metric-buttons button:hover {
-  background: var(--clr-primary);
-  color: var(--clr-light);
-}
-
+.metric-buttons button:hover,
 .metric-buttons button.active {
   background: var(--clr-primary);
   color: var(--clr-light);
+  border-color: var(--clr-primary);
 }
 
 /* Top-5 lista */
 .stats-panel .top5 h3 {
   margin-bottom: 0.5rem;
 }
-
 .stats-panel .top5 ul {
   list-style: none;
   margin: 0;
   padding: 0;
   font-size: 0.9rem;
 }
-
 .stats-panel .top5 li {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.25rem;
 }
 
-/* ===== Brush ocupa casi todo el ancho =================================== */
+/* ===== Brush (Choropleth) ===== */
 .timeline-wrap {
   margin: 0 auto 2rem;
-  width: calc(100% - 2rem); /* margen lateral 1rem */
+  width: calc(100% - 2rem);
   font-size: 0.75rem;
 }
-
 .range-label {
   text-align: center;
   margin-top: 0.4rem;
   color: #334;
 }
-
-/* ===== Tooltip =========================================================== */
 .tooltip {
   position: absolute;
   pointer-events: none;
@@ -232,9 +218,76 @@ body {
   opacity: 0;
   transition: opacity 0.2s;
 }
-
-/* ===== Brush manejadores visibles ======================================== */
 .brush .handle {
   stroke: #222;
   fill: #fff;
+}
+
+/* ========================================================================
+   Sankey Flow
+   ==================================================================== */
+.sf-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 3rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+.sf-chart {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-left: 4px;
+}
+.sf-controls {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+.sf-controls label,
+.sf-controls p {
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: var(--clr-text);
+}
+.sf-controls select {
+  width: 100%;
+  padding: 0.35rem 0.4rem;
+  margin-top: 0.2rem;
+  border: 1px solid #c4cdd5;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 0.9rem;
+}
+.sf-controls hr {
+  border: 0;
+  border-top: 1px solid #e0e6ec;
+  margin: 1rem 0;
+}
+.sf-cat-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.sf-cat-box button {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--clr-primary);
+  background: transparent;
+  color: var(--clr-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s, color 0.2s;
+}
+.sf-cat-box button:hover,
+.sf-cat-box button.active {
+  background: var(--clr-primary);
+  color: var(--clr-light);
+}
+.sf-chart svg {
+  height: auto;
+  aspect-ratio: 640 / 420;
 }

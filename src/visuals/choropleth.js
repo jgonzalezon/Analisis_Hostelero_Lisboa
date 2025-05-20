@@ -16,7 +16,8 @@ let metric = 'total';         // 'total' | 'revenue' | 'revenuePer'
 let byCountry = new Map();
 
 /* ──────────── Init ──────────────────────────────────────────────────────── */
-export async function initChoropleth(container) {
+export function initChoropleth(container, world, csv) {
+
   container.classList.add('choropleth-layout');
 
   /* 1· Panel de controles + Top-5  ---------------------------------------- */
@@ -55,15 +56,7 @@ export async function initChoropleth(container) {
   container.appendChild(timelineWrap);
 
   /* ─── Carga de datos ──────────────────────────────────────────────────── */
-  [world, csv] = await Promise.all([
-    d3.json('./data/countries.geo.json'),
-    d3.csv('./data/hotel_bookings_clean.csv', d => {
-      d.arrivalDate = new Date(d.dia);
-      d.adr         = +d.adr;
-      d.stays       = +d.stays_in_weekend_nights + +d.stays_in_week_nights;
-      return d;
-    })
-  ]);
+
 
   countryName   = new Map(world.features.map(f => [f.id, f.properties.name]));
   YEARS         = Array.from(new Set(csv.map(d => +d.arrival_date_year))).sort();
