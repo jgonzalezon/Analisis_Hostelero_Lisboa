@@ -3,11 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-
   "homepage": "https://jgonzalezon.github.io/Analisis_Hostelero_Lisboa",
-
-
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -15,12 +11,12 @@
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^6.3.5"
   },
   "dependencies": {
     "d3": "^7.9.0",
     "d3-sankey": "^0.12.3",
-    "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
     "scrollama": "^3.2.0"
   }

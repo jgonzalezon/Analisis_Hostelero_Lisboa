@@ -42,8 +42,8 @@ export async function initChoropleth(container) {
 
   /* ----- cargas ---------------------------------------------------------- */
   const [world,csv] = await Promise.all([
-    d3.json('/data/countries.geo.json'),
-    d3.csv('/data/hotel_bookings_clean.csv',d=>{
+    d3.json('./data/countries.geo.json'),
+    d3.csv('./data/hotel_bookings_clean.csv',d=>{
       d.arrivalDate=new Date(d.dia);
       return d;
     })
