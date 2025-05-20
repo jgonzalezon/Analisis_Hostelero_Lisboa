@@ -56,9 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
   ['#choropleth','#sankey','#scatter'].forEach(bootstrapVisual);
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-  bootstrapVisual(location.hash || '#choropleth');
-});
+
 window.addEventListener('hashchange', () => {
   bootstrapVisual(location.hash);
 });

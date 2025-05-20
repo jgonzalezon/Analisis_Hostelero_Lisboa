@@ -1,0 +1,21 @@
+{
+  "hash": "f72c4814",
+  "configHash": "0a1703c4",
+  "lockfileHash": "757c4ec4",
+  "browserHash": "6d700a8e",
+  "optimized": {
+    "d3": {
+      "src": "../../node_modules/d3/src/index.js",
+      "file": "d3.js",
+      "fileHash": "9583a822",
+      "needsInterop": false
+    },
+    "d3-sankey": {
+      "src": "../../node_modules/d3-sankey/src/index.js",
+      "file": "d3-sankey.js",
+      "fileHash": "6da3ae5c",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}
