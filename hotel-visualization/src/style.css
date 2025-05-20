@@ -1,0 +1,152 @@
+/* === Variables CSS === */
+:root {
+  --clr-bg: #f9fafb;
+  --clr-primary: #006d77;
+  --clr-secondary: #83c5be;
+  --clr-text: #102a43;
+  --clr-light: #ffffff;
+  --max-width: 1120px;
+  --header-height: 64px;
+}
+
+/* === Reset básico === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 1.5;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Header === */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: var(--clr-primary);
+  color: var(--clr-light);
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  justify-content: space-between;
+}
+
+.app-header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.app-header nav a {
+  color: var(--clr-light);
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.app-header nav a:hover {
+  text-decoration: underline;
+}
+
+/* === Secciones de visualización === */
+.viz-section {
+  padding: 4rem 1.25rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.viz-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+}
+
+/* Contenedor donde D3 renderizará el SVG / Canvas */
+.viz-container {
+  width: 100%;
+  min-height: 480px;
+  background: var(--clr-light);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  position: relative;
+}
+
+/* === Footer === */
+.app-footer {
+  margin-top: auto;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  background: var(--clr-secondary);
+  color: var(--clr-light);
+}
+/* ===== layout vertical ============================================ */
+.choropleth-layout { display:block; }         /* apilado */
+.choro-map         { width:100%; }
+.legend-wrap       { width:100%; margin:0.5rem 0 1rem; }
+
+/* ==== Leyenda incrustada bajo el mapa =================================== */
+.map-legend rect { stroke:#444; stroke-width:.6; }
+.map-legend .legend-axis text { font-size: .8rem; fill:#333; }
+.map-legend .legend-axis path,
+.map-legend .legend-axis line { stroke:#555; stroke-width:.5; }
+
+/* panel “Top-5” ----------------------------------------------------------- */
+.stats-panel {
+  margin-top: 1.5rem;
+  max-width: 460px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background:#fff;
+}
+.stats-panel h3   { margin-bottom:.75rem; }
+.stats-panel ul   { list-style:none; margin:0; padding:0; font-size:.9rem; }
+.stats-panel li   { display:flex; justify-content:space-between; margin:.25rem 0; }
+
+/* brush ocupa casi todo el ancho ----------------------------------------- */
+.timeline-wrap {
+  margin: 0 auto 2rem;
+  width: calc(100% - 2rem);      /* margen lateral 1 rem */
+  font-size:.75rem;
+}
+.range-label { text-align:center; margin-top:.4rem; color:#334; }
+
+/* leyenda más visible ----------------------------------------------------- */
+.legend-wrap svg { display:block; margin:auto; }
+.legend-wrap rect { stroke:#333; stroke-width:.4; }
+.legend-axis path,
+.legend-axis line { stroke:#666; stroke-width:.4; }
+
+/* Tooltip ------------------------------------------------------------------ */
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* ===== Brush manejadores visibles ======================================== */
+.brush .handle { stroke:#222; fill:#fff; }
+/* (d3 v7 añade <rect class="handle"..>; si no se ve, esto asegura contraste) */
+
