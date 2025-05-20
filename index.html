@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Booking Visualizations</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+
+  <body>
+    <header class="app-header">
+      <h1>Hotel Booking Dashboard</h1>
+      <nav>
+        <a href="#choropleth">Origen de turistas</a>
+        <a href="#sankey">Flujo Reserva → Cancelación</a>
+        <a href="#scatter">Antelación vs Cancelación</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ❶ Choropleth -->
+      <section id="choropleth" class="viz-section">
+        <h2>¿De dónde vienen los turistas?</h2>
+        <div class="viz-container"></div>
+      </section>
+
+      <!-- ❷ Sankey -->
+      <section id="sankey" class="viz-section">
+        <h2>Rutas de reserva a cancelación</h2>
+        <div class="viz-container"></div>
+      </section>
+
+      <!-- ❸ Bubble / Scatter -->
+      <section id="scatter" class="viz-section">
+        <h2>Antelación de reservas y cancelaciones</h2>
+        <div class="viz-container"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>&copy; 2025 Hotel Data Insights</small>
+    </footer>
+
+    <!-- JS -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
